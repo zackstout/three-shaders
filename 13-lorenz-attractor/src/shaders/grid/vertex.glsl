@@ -9,6 +9,11 @@ uniform float uTime;
 attribute float aSize;
 attribute float aTimeMultiplier;
 
+uniform float uTimeMultiplierScale;
+uniform float uTimeMultiplierOffset;
+uniform float uTimeMultiplierFreq;
+uniform float uTimeMultiplierAmp;
+
 void main()
 {
 
@@ -31,8 +36,9 @@ void main()
     float finalSize = uSize * uResolution.y * aSize * 0.02;
 
     // Mess with scale on aTimeMultiplier, and the initial offset!!
-    float scaledATimeMultiplier = aTimeMultiplier * 2.;
-    float scl = 0.5 + sin((uTime + scaledATimeMultiplier) * 3.) * 1.;
+    // TODO: Can also add FBM here, at least one level...
+    float scaledATimeMultiplier = aTimeMultiplier * uTimeMultiplierScale;
+    float scl = uTimeMultiplierOffset + sin((uTime + scaledATimeMultiplier) * uTimeMultiplierFreq) * uTimeMultiplierAmp;
     finalSize *= scl;
 
     gl_PointSize = finalSize;

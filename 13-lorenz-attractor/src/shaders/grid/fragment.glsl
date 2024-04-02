@@ -37,6 +37,7 @@ void main()
         discard;
     }
 
+    // Huh.. kind of interesting?
     // lightIntensity = step(lightIntensity, distance(uv, vec2(0.25)) + 0.65);
 
     col += ambientLight(lightColor, lightIntensity);
