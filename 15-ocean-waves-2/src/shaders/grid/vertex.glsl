@@ -28,7 +28,9 @@ void main()
 {
     vec3 pos = position;
 
-    pos.z += waveElevation(pos);
+    // Wait.... what's going on.... Oh I think it was z here because we hadn't multiplied by modelMatrix yet...
+    // But the light is only obeying the ... y? So we get the banded effect? Even if this is applied.
+    // pos.z += waveElevation(pos);
 
     // We must compute the normal here
     float shift = 0.01;
@@ -39,6 +41,7 @@ void main()
     vec3 modelPositionB = modelPosition.xyz + vec3(0.0, 0.0, - shift);
 
     // Elevation
+    // Whoa, swizzling different orders from modelPosition is weird....
     float elevation = waveElevation(modelPosition.xyz);
     modelPosition.y += elevation;
     modelPositionA.y += waveElevation(modelPositionA);
