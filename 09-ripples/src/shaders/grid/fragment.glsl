@@ -24,7 +24,6 @@ float ripple(vec2 uv, vec2 ctr, float t)
     for (int i=0; i < 4; i++){
         v += smoothstep(r - smoothWidth, r, d);
         v -= smoothstep(r + ringWidth, r + ringWidth + smoothWidth, d);
-
         r -= 0.05;
     }
 
