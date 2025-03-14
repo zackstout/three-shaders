@@ -43,7 +43,7 @@ vec3 fbm(vec2 uv){
 
     vec3 col = mix(vec3(0.0), vec3(magenta), n);
     return col;
-}`
+}
 
 vec3 woodgrain(vec2 uv){
     float xStretch = 10.0;
